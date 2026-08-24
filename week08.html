@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week08 チームメンバー一覧</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-50 p-8">
+
+  <div class="mx-auto max-w-3xl">
+    <h1 class="text-2xl font-bold text-slate-900">チームメンバー一覧</h1>
+
+    <div id="filterButtons" class="mt-6 flex flex-wrap gap-2"></div>
+
+    <div id="memberContainer" class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2"></div>
+  </div>
+
+  <script>
+    const items = [
+      { name: 'トマト', role:'ジューシーでさっぱりする役割', comment: '酸いも甘いも全部' },
+      { name: 'ニンジン', role:'甘くて優しいオレンジの希望の役割', comment: 'ちゃんと火を通してから食べてください' },
+      { name: 'アスパラガス', role:'緑で長くまっすぐかつしなるオールマイティー感の役割', comment: 'ベーコンと一緒に焼くと美味しい' },
+      { name: '大阪ガス', role:'関西地域に電力を届ける役割', comment: '我こそは関西のインフラ'},
+      { name: '関西のCM', role:'関西人の結束力を強める役割', comment: 'トマト、ニンジンって言われるとアスパラガスって言いたくなるあなたは生粋の関西人です' },
+    ];
+
+    const container = document.getElementById("memberContainer");
+    const filterButtons = document.getElementById("filterButtons");
+
+    // カード描画を関数化(絞り込み後の再描画でも使うため)
+    function renderCards(list) {
+      container.innerHTML = "";
+      list.forEach(function(item){
+        const card = document.createElement("div");
+        card.className = "rounded-xl border border-slate-200 bg-white p-5 shadow-sm";
+
+        card.innerHTML =
+          "<h2 class='text-lg font-semibold text-slate-900'>" + item.name + "</h2>" +
+          "<p class='mt-1 text-sm font-medium text-slate-500'>" + item.role + "</p>" +
+          "<p class='mt-2 text-sm text-slate-600'>" + item.comment + "</p>";
+
+        container.appendChild(card);
+      });
+    }
+
+    renderCards(items);
+
+  </script>
+</body>
+</html>
