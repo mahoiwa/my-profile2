@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week12 POSSE課題</title>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header class="bg-indigo-600 text-white py-8 text-center">
+        <h1>ポートフォリオ</h1>
+        <p>この4カ月の軌跡</p>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 py-12 space-y-16">
+        <section>
+            <h2>自己紹介</h2>
+            <p>Hello</p>
+        </section>
+
+        <section>
+            <h2>スキルリスト</h2>
+            <ul class="flex flex-wrap gap-2">
+                <li class="transition-all duration-300 hover:scale-110
+                bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">HTML</li>
+                <li class="transition-all duration-300 hover:scale-110
+                bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">Tailwind CSS</li>
+                <li class="transition-all duration-300 hover:scale-110
+                bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">JavaScript</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>作品スライダー</h2>
+            <section class="splide" aria-label="作品スライダー">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <img src="./imeges.week12/LINE_ALBUM_新ハ！！_260606_1.jpg" alt="作品1" class="w-full object-cover rounded">
+                        </li>
+                        <li class="splide__slide">
+                            <img src="./imeges.week12/26619.jpg" alt="作品2" class="w-full object-cover rounded">
+                        </li>
+                    </ul>
+
+                </div>
+
+            </section>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-gray-400 text-center py-6 mt-16">
+        <p>2026 まほ</p>
+    </footer>
+
+      <!-- Splide JS（bodyの閉じタグ前） -->
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script src="./js/main.js"></script>
+
+  <script>
+new Splide('.splide').mount();
+  </script>
+
+</body>
