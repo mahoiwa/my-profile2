@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <title>Week09 ユーザー登録フォーム</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            body {
+                font-family: "Yu Gothic", "Hiragino Sans", sans-serif;
+                background: #f3f4f6;
+            }
+            .terms-box {
+                height: 220px;
+                overflow-y: auto;
+                border: 1px solid #d1d5db;
+                border-radius: 0.75rem;
+                background: #f9fafb;
+                padding: 1rem;
+                line-height: 1.7;
+                font-size: 0.9rem;
+                color: #374151;
+            }
+            .form-message {
+                margin-top: 1rem;
+                min-height: 1.5rem;
+                font-size: 0.95rem;
+                font-weight: 600;
+            }
+            .form-message.error {
+                color: #dc2626;
+            }
+            .form-message.success {
+                color: #15803d;
+            }
+            input.is-invalid {
+                border-color: #dc2626;
+                box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.2);
+            }
+        </style>
+    </head>
+    <body class="min-h-screen flex items-center justify-center p-6">
+        <main class="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
+            <h1 class="mb-6 text-2xl font-bold text-center text-gray-800">ユーザー登録</h1>
+
+            <form id="signupForm" novalidate>
+                <div class="mb-5">
+                    <label for="name" class="mb-2 block text-sm font-medium text-gray-700">名前</label>
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                        aria-describedby="form-message"
+                    >
+                </div>
+
+                <div class="mb-5">
+                    <label for="email" class="mb-2 block text-sm font-medium text-gray-700">メールアドレス</label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                        aria-describedby="form-message"
+                    >
+                </div>
+
+                <div class="mb-5">
+                    <label for="password" class="mb-2 block text-sm font-medium text-gray-700">パスワード</label>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        required
+                        class="w-full rounded-lg border border-gray-300 px-3 py-2 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                        aria-describedby="form-message"
+                    >
+                </div>
+
+                <div class="mb-4">
+                    <h2 class="mb-2 text-sm font-medium text-gray-700">利用規約</h2>
+                    <div class="terms-box" aria-label="利用規約本文">
+                        <h3 class="mb-2 font-bold">第1条（秘密情報）</h3>
+                        <p class="mb-3">本契約における「秘密情報」とは、甲又は乙が相手方に開示し、かつ開示の際に秘密である旨を明示した技術上又は営業上の情報、本契約の存在及び内容その他一切の情報をいう。ただし、開示を受けた当事者が書面によってその根拠を立証できる場合に限り、以下の情報は秘密情報の対象外とするものとする。</p>
+                        <ol class="mb-3 list-decimal pl-5">
+                            <li>開示を受けたときに既に保有していた情報</li>
+                            <li>開示を受けた後、秘密保持義務を負うことなく第三者から正当に入手した情報</li>
+                            <li>開示を受けた後、相手方から開示を受けた情報に関係なく独自に取得し、又は創出した情報</li>
+                            <li>開示を受けたときに既に公知であった情報</li>
+                            <li>開示を受けた後、自己の責めに帰し得ない事由により公知となった情報</li>
+                        </ol>
+
+                        <h3 class="mb-2 font-bold">第2条（秘密情報等の取扱い）</h3>
+                        <p class="mb-3">1. 甲又は乙は、相手方から開示を受けた秘密情報及び秘密情報を含む記録媒体若しくは物件（複写物及び複製物を含む。以下「秘密情報等」という。）の取扱いについて、次の各号に定める事項を遵守するものとする。</p>
+                        <ol class="mb-3 list-decimal pl-5">
+                            <li>情報取扱管理者を定め、相手方から開示された秘密情報等を善良なる管理者としての注意義務をもって厳重に保管、管理する。</li>
+                            <li>秘密情報等は、本取引の目的以外には使用しないものとする。</li>
+                            <li>秘密情報等を複製する場合には、本取引の目的の範囲内に限って行うものとし、その複製物は、原本と同等の保管、管理をする。</li>
+                            <li>漏えい、紛失、盗難、盗用等の事態が発生し、又はそのおそれがあることを知った場合は、直ちにその旨を相手方に書面をもって通知する。</li>
+                            <li>秘密情報の管理について、取扱責任者を定め、書面をもって取扱責任者の氏名及び連絡先を相手方に通知する。</li>
+                        </ol>
+                        <p class="mb-3">2. 甲又は乙は、次項に定める場合を除き、秘密情報等を第三者に開示する場合には、書面により相手方の事前承諾を得なければならない。この場合、甲又は乙は、当該第三者との間で本契約書と同等の義務を負わせ、これを遵守させる義務を負うものとする。</p>
+                        <p class="mb-3">3. 甲又は乙は、法令に基づき秘密情報等の開示が義務づけられた場合には、事前に相手方に通知し、開示につき可能な限り相手方の指示に従うものとする。</p>
+
+                        <h3 class="mb-2 font-bold">第3条（返還義務等）</h3>
+                        <p class="mb-3">1. 本契約に基づき相手方から開示を受けた秘密情報を含む記録媒体、物件及びその複製物（以下「記録媒体等」という。）は、不要となった場合又は相手方の請求がある場合には、直ちに相手方に返還するものとする。</p>
+                        <p class="mb-3">2. 前項に定める場合において、秘密情報が自己の記録媒体等に含まれているときは、当該秘密情報を消去するとともに、消去した旨（自己の記録媒体等に秘密情報が含まれていないときはその旨）を相手方に書面にて報告するものとする。</p>
+
+                        <h3 class="mb-2 font-bold">第4条（損害賠償等）</h3>
+                        <p class="mb-3">甲若しくは乙、甲若しくは乙の従業員若しくは元従業員又は第2条第2項の第三者が相手方の秘密情報等を開示するなど本契約の条項に違反した場合には、甲又は乙は、相手方が必要と認める措置を直ちに講ずるとともに、相手方に生じた損害を賠償しなければならない。</p>
+
+                        <h3 class="mb-2 font-bold">第5条（反社会的勢力の排除）</h3>
+                        <p class="mb-3">1. 甲及び乙は、現在及び将来にわたって、自らが反社会的勢力（暴力団、暴力団員、暴力団員でなくなったときから５年を経過しない者、暴力団準構成員、暴力団関係企業、総会屋等、社会運動等標ぼうゴロ又は特殊知能暴力集団、その他これらに準ずる者をいう。以下同じ。）に該当しないことの表明、並びに反社会的勢力との関係を現在及び将来にわたって有しないことを誓約する。</p>
+                        <p class="mb-3">2. 甲及び乙は、自己又は第三者を利用して次の各号の行為を行ってはならない。</p>
+                        <ol class="mb-3 list-decimal pl-5">
+                            <li>暴力的な要求行為</li>
+                            <li>法的な責任を超えた不当な要求行為</li>
+                            <li>取引に関して、脅迫的な言動をし、又は暴力を用いる行為</li>
+                            <li>風説を流布し、偽計又は威力を用いて相手方の信用を毀損し、又は相手方の業務を妨害する行為</li>
+                            <li>その他前各号に準ずる行為</li>
+                        </ol>
+                        <p class="mb-3">3. 甲及び乙は、反社会的勢力への該当性の判断のために調査を要すると判断した場合、相手方に対して、当該調査に協力するよう求めることができる。</p>
+                        <p class="mb-3">4. 甲又は乙は、相手方が本条の規定に違反した場合、何ら催告等の手続きを要せず、甲及び乙の間にて締結された全ての契約を解除することができる。</p>
+
+                        <h3 class="mb-2 font-bold">第6条（有効期限）</h3>
+                        <p class="mb-3">本契約の有効期限は、本契約の締結日から起算し、満●年間とする。期間満了後の●ヵ月前までに甲又は乙のいずれからも相手方に対する書面の通知がなければ、本契約は同一条件でさらに●年間継続するものとし、以後も同様とする。</p>
+
+                        <h3 class="mb-2 font-bold">第7条（協議事項）</h3>
+                        <p class="mb-3">本契約に定めのない事項について又は本契約に疑義が生じた場合は、協議の上解決する。</p>
+
+                        <h3 class="mb-2 font-bold">第8条（管轄裁判所）</h3>
+                        <p class="mb-3">甲及び乙は、本契約に関する一切の係争については、訴額に応じて〇〇地方裁判所又は〇〇簡易裁判所をその専属的管轄裁判所とすることに合意する。</p>
+
+                        <p class="mb-3">本契約締結の証として本書2通を作成し、各自記名押印のうえ1通を保管する。</p>
+                    </div>
+                </div>
+
+                <div class="mb-6 flex items-start gap-3">
+                    <input
+                        id="agree"
+                        name="agree"
+                        type="checkbox"
+                        required
+                        class="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    >
+                    <label for="agree" class="text-sm text-gray-700">上記利用規約に同意する</label>
+                </div>
+
+                <button type="submit" class="w-full rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white transition hover:bg-blue-700">
+                    登録する
+                </button>
+
+                <p id="form-message" class="form-message" aria-live="polite"></p>
+            </form>
+        </main>
+
+        <script>
+            const form = document.getElementById('signupForm');
+            const message = document.getElementById('form-message');
+
+            function setFieldState(field, isValid) {
+                const input = form.elements[field];
+                if (input) {
+                    input.classList.toggle('is-invalid', !isValid);
+                    input.setAttribute('aria-invalid', String(!isValid));
+                }
+            }
+
+            function showMessage(text, type) {
+                message.textContent = text;
+                message.className = 'form-message ' + type;
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const name = form.elements.name.value.trim();
+                const email = form.elements.email.value.trim();
+                const password = form.elements.password.value;
+                const agree = form.elements.agree.checked;
+                const errors = [];
+
+                ['name', 'email', 'password'].forEach((field) => setFieldState(field, true));
+                setFieldState('agree', true);
+
+                if (!name) {
+                    errors.push('名前を入力してください。');
+                    setFieldState('name', false);
+                }
+
+                if (!email) {
+                    errors.push('メールアドレスを入力してください。');
+                    setFieldState('email', false);
+                }
+
+                if (!password) {
+                    errors.push('パスワードを入力してください。');
+                    setFieldState('password', false);
+                } else if (password.length < 8) {
+                    errors.push('パスワードは8文字以上で入力してください。');
+                    setFieldState('password', false);
+                }
+
+                if (!agree) {
+                    errors.push('利用規約に同意してください。');
+                    setFieldState('agree', false);
+                }
+
+                if (errors.length > 0) {
+                    showMessage(errors.join(' '), 'error');
+                    return;
+                }
+
+                showMessage('登録完了！', 'success');
+                form.reset();
+                ['name', 'email', 'password'].forEach((field) => setFieldState(field, true));
+                setFieldState('agree', true);
+            });
+        </script>
+    </body>
+</html>
