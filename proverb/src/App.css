@@ -1,0 +1,279 @@
+:root {
+  --paper: #fbf8f2;
+  --paper-raised: #ffffff;
+  --ink: #262a33;
+  --ink-soft: #6b7280;
+  --sage: #5f7a61;
+  --sage-deep: #4a6149;
+  --line: #e4ddcf;
+  --dot: #c97b63;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 24px 20px 48px;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Segoe UI", sans-serif;
+}
+
+/* タブ切り替え */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tab {
+  flex: 1;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.tab-active {
+  color: var(--sage-deep);
+  border-bottom: 2px solid var(--sage);
+  font-weight: 600;
+}
+
+/* 格言ページ */
+.today-date {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  margin: 0 0 16px;
+}
+
+.quote-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 36px 24px 28px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.quote-text {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 21px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+
+.quote-text-small {
+  font-size: 17px;
+}
+
+.quote-author {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0 0 24px;
+}
+
+.loading-text,
+.error-text {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+
+.change-btn {
+  background: none;
+  border: 1px solid var(--sage);
+  color: var(--sage-deep);
+  padding: 8px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.change-btn:hover:not(:disabled) {
+  background: rgba(95, 122, 97, 0.1);
+}
+
+.change-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.memo-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.memo-box label {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.memo-box textarea {
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px;
+  resize: vertical;
+}
+
+.memo-box textarea:focus {
+  outline: 2px solid var(--sage);
+  outline-offset: 1px;
+}
+
+.memo-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.save-btn {
+  background: var(--sage-deep);
+  color: #fff;
+  border: none;
+  padding: 9px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: var(--sage);
+}
+
+.saved-badge {
+  font-size: 13px;
+  color: var(--sage-deep);
+}
+
+/* フィードページ */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.month-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.month-nav {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-soft);
+  padding-bottom: 4px;
+}
+
+.calendar-cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper-raised);
+  font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-empty {
+  border: none;
+  background: none;
+  cursor: default;
+}
+
+.calendar-cell.has-record {
+  border-color: var(--sage);
+}
+
+.calendar-cell.is-selected {
+  background: var(--sage-deep);
+  color: #fff;
+}
+
+.calendar-dot {
+  position: absolute;
+  bottom: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--dot);
+}
+
+.calendar-cell.is-selected .calendar-dot {
+  background: #fff;
+}
+
+.record-detail {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 20px;
+  min-height: 96px;
+}
+
+.detail-hint {
+  color: var(--ink-soft);
+  font-size: 13px;
+  margin: 0;
+}
+
+.detail-date {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+}
+
+.detail-memo {
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin: 0;
+}
